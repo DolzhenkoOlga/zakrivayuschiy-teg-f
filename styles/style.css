@@ -13,4 +13,333 @@
 .page {
   min-inline-size: 320px;
   min-block-size: 100dvb;
+  font-variation-settings: 'wdth' var(--font-weight-text-block);
+  background-image: var(--page-gradient);
+  background-size: cover;
+  background-attachment: fixed;
+  font-family: var(--main-font-family), sans-serif;
+}
+
+.header {
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-self: center;
+  gap: 20px;
+  padding-inline: clamp(1rem, -1.3438rem + 10vw, 7.65625rem);
+  padding-block: clamp(7.625rem, 7.4489rem + 0.7512vw, 8.125rem);
+  margin-block: 98px;
+  border: var(--border);
+  inline-size: clamp(23.1875rem, 0rem + 100vw, 43.75rem);
+}
+
+.header-title {
+  font-family: var(--accent-font-family), fantasy;
+  font-size: clamp(3.0625rem, 2.7104rem + 1.5023vw, 4.0625rem);
+  text-transform: uppercase;
+}
+
+.header-text {
+  font-family: var(--accent-font-family), fantasy;
+  font-size: clamp(0.875rem, 0.6769rem + 0.8451vw, 1.4375rem);
+  text-transform: uppercase;
+}
+
+.content {
+  inline-size: clamp(23.1875rem, 0rem + 100vw, 43.75rem);
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+  gap: 50px;
+}
+
+.card {
+  border: var(--border);
+  background-color: #fff;
+}
+
+.card-title {
+  padding: 4px 10px;
+  font-weight: var(--font-weight-block-title);
+  font-size: 18px;
+
+}
+
+.image-block {
+  border-block-end: var(--border);
+  border-block-start: var(--border);
+  position: relative;
+}
+
+.card-image {
+  width: 100%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  display: block;
+}
+
+.image-label {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  font-family: var(--accent-font-family);
+  font-size: 14px;
+  text-transform: uppercase;
+  mix-blend-mode: hard-light;
+  text-shadow: var(--label-shadow);
+}
+
+@supports ((-webkit-text-stroke: 1px var(--accent-color)) or (text-stroke: 1px var(--accent-color))) { 
+  .image-label {
+    -webkit-text-stroke: 1px var(--accent-color);
+    text-stroke: 1px var(--accent-color);
+    text-shadow: none;
+  }
+}
+
+.text-blocks {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  padding: 25px;
+}
+
+.text-block {
+  font-size: 18px;
+  line-height: 21px;
+}
+
+.card-button-block {
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  padding-block-end: 25px;
+  padding-inline-end: 25px;
+}
+
+.button {
+  position: relative;
+  border: none;
+  outline: none;
+  background-color: inherit;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;
+}
+
+.button::after {
+  content: "";
+  position: absolute;
+  background-color: #fff;
+  inset: 0;
+  transform: scaleX(0);
+  mix-blend-mode: difference;
+  transform-origin: left;
+  z-index: 1;
+  transition: transform 0.5s ease-in-out;
+}
+
+.button:hover::after {
+  transform: scaleX(1);
+}
+
+.button:focus-visible {
+  box-shadow: 2px 2px 0 0 #000;
+}
+
+.card__icon-button {
+  background-color: inherit;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+}
+
+.card__icon-button:focus-visible {
+  border-color: var(--accent-color);
+}
+
+.card__icon-button:focus {
+  outline: none;
+}
+
+.like-icon {
+  display: block;
+}
+
+.sparks {
+  opacity: 0;
+}
+
+.like-icon.is-liked .sparks {
+  animation: sparks-scale 0.3s 1 0.3s ease-in;
+}
+
+.contour {
+  transition: fill 0.1s linear;
+}
+
+.like-icon.is-liked .contour {
+  fill: var(--animation-fill-color);
+  animation: fill 0.3s linear 0.06s;
+}
+
+.core {
+  transition: fill 0.3s linear 0.03s;
+}
+
+.like-icon.is-liked .core {
+  fill: var(--animation-fill-color);
+  animation: fill 0.3s linear;
+}
+
+.like-icon:hover .core {
+  fill: var(--contour-color);
+  transition: fill 0.3s linear;
+}
+
+.like-icon:active .core {
+  fill: var(--animation-fill-color);
+  transition: ill 0.3s linear;
+}
+
+.main-body {
+  transition: fill 0.3s linear;
+}
+
+.like-icon:hover .main-body {
+  fill: var(--contour-color);
+  transition: fill 0.3s linear 0.05s;
+}
+
+.like-icon:active .main-body {
+  fill: var(--animation-fill-color);
+  transition: fill 0.3s linear 0.05s;
+}
+
+.like-icon.is-liked .main-body {
+  fill: var(--animation-fill-color);
+  animation: fill 0.3s linear 0.06s;
+}
+
+.like-icon.is-liked .heart {
+  animation: heart-scale 0.3s ease-in 0.1s;
+}
+
+.card__like-button {
+  border: var(--border);
+  width: 130px;
+  height: 38px;
+  font-family: var(--accent-font-family);
+  font-size: 14px;
+}
+
+.save-memory {
+  margin-inline: auto;
+  border: var(--border);
+  background-color: var(--accent-color);
+  margin-block-end: 100px;
+}
+
+.icon {
+  width: 21px;
+}
+
+.big-icon {
+  width: 39px;
+  height: 39px;
+  align-self: center;
+  flex-shrink: 0;
+}
+
+.button__text {
+  font-family: var(--accent-font-family);
+  font-size: 14px;
+  display: block;
+  position: relative;
+  z-index: 0;
+  color: var(--accent-color);
+  mix-blend-mode: difference;
+}
+
+.save-button {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  padding: 15px 18px;
+}
+
+@media (width <= 375px) {
+  .save-button{
+  flex-direction: column;
+  }
+
+  .icon {
+    width: 28px;
+  }
+}
+
+.dialog {
+  padding-inline: 40px;
+  padding-block: 30px;
+  max-inline-size: clamp(21.8125rem, 23.67rem + -2.07vw, 23.1875rem);
+}
+
+.dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.75)
+}
+
+.save-block {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.save-block-text {
+  font-family: var(--accent-font-family), fantasy;
+  font-size: 14px;
+  line-height: 150%;
+  text-transform: uppercase;
+}
+
+.close-button {
+  display: flex;
+  justify-self: center;
+  border: var(--border);
+  padding-inline: clamp(7.15625rem, 6.0024rem + 4.9231vw, 8.15625rem);
+  margin-top: 30px;
+  height: 38px;
+  align-items: center;
+}
+
+.many-filters {
+  filter: brightness(90%) saturate(200%) contrast(90%);
+}
+
+.contrast {
+  filter: contrast(120%);
+}
+
+.blur {
+  filter: blur(0.1em);
+}
+
+.opacity {
+  filter: opacity(90%);
+}
+
+.grayscale {
+  filter: grayscale(70%);
+}
+
+.saturate {
+  filter: saturate(200%);
+}
+
+.hue-rotate {
+  filter: hue-rotate(20deg);
+}
+
+.sepia {
+  filter: sepia(50%);
 }
