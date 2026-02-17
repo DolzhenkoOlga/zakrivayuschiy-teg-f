@@ -13,7 +13,7 @@
 .page {
   min-inline-size: 320px;
   min-block-size: 100dvb;
-  font-variation-settings: 'wdth' var(--font-weight-text-block);
+  font-variation-settings: 'wght' var(--font-weight-text-block);
   background-image: var(--page-gradient);
   background-size: cover;
   background-attachment: fixed;
@@ -93,7 +93,7 @@
 @supports (
   (-webkit-text-stroke: 1px var(--accent-color))
   or
-  (text-stroke: 1px var(--accent-color))) { 
+  (text-stroke: 1px var(--accent-color))) {
   .image-label {
     -webkit-text-stroke: 1px var(--accent-color);
     text-stroke: 1px var(--accent-color);
